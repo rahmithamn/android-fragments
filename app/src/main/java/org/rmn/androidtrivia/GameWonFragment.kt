@@ -6,6 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import org.rmn.androidtrivia.databinding.FragmentGameWonBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -16,8 +20,15 @@ class GameWonFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game_won, container, false)
+        val binding: FragmentGameWonBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_game_won, container, false)
+
+        binding.btnNextmatch.setOnClickListener { view: View->
+            view.findNavController().navigate(R.id.action_gameWonFragment_to_gameFragment)
+        }
+        var args = arguments?.let { GameWonFragmentArgs.fromBundle(it) }
+        Toast.makeText(context, "NumCorrect: ${args?.numCorrect}, NumQuestions: ${args?.numQuestions}", Toast.LENGTH_SHORT).show()
+        return binding.root
     }
 
 

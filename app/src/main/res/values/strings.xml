@@ -6,4 +6,6 @@
     <string name="submit">submit</string>
     <string name="title_android_trivia_question">Android Trivia (%1$d/%2$d)</string>
     <string name="about_text">blbabalala</string>
+    <string name="next_match">Next Match!</string>
+    <string name="try_again">Try Again</string>
 </resources>
